@@ -1,109 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0px;
+            background: #f4f4f4;
+        }
+
+        h1 {
+            margin-bottom: 0px;
+        }
+
+        .grid-franquicias {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            justify-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .franquicia {
+
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            transition: transform 0.2s;
+        }
+
+        .franquicia:hover {
+            transform: scale(1);
+        }
+
+        .franquicia img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* Centrar la segunda fila con 2 elementos */
+        .grid-franquicias>.franquicia:nth-child(4),
+        .grid-franquicias>.franquicia:nth-child(5) {
+            grid-column: span 0.5;
+        }
+
+        .grid-franquicias>.franquicia:nth-child(4) {
+            grid-column-start: 1;
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .grid-franquicias {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-franquicias {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
+
 <body>
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand">TCG</a>
-                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-
-
-
-        </div>
-            <form class="d-flex" role="Buscar">
-            <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
+            <a class="navbar-brand" href="index.html">
+                <img src="C:\Users\crist\OneDrive\Escritorio\Proyecto Fullstack 2\img\Logo.png" alt="TCG Project"
+                    width="40" height="40" class="d-inline-block align-text-top" />
+                TCG Project
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productosDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="productosDropdown">
+                            <li><a class="dropdown-item" href="categorias.html?franquicia=pokemon">Pokémon</a></li>
+                            <li><a class="dropdown-item" href="categorias.html?franquicia=yugioh">Yu-Gi-Oh</a></li>
+                            <li><a class="dropdown-item" href="categorias.html?franquicia=onepiece">One Piece</a></li>
+                            <li><a class="dropdown-item" href="categorias.html?franquicia=magic">Magic the gathering</a>
+                            </li>
+                            <li><a class="dropdown-item" href="categorias.html?franquicia=mitos">Mitos y leyendas</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="contacto.html">Contactanos</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="carrito.html" class="btn btn-outline-dark" style="display: flex; align-items: center;">
+                        <i class="bi bi-cart-fill me-1"></i>
+                        Carrito
+                        <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart-count">0</span>
+                    </a>
+                </div>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
+                    <a href="inicio_sesion.html" class="btn"
+                        style="background:#940d0d; color:#fff; border:none; transition:background 0.2s, color 0.2s;">
+                        Iniciar sesión
+                    </a>
+                </form>
+            </div>
         </div>
     </nav>
 
-        <div id="carouselExample" class="carousel slide">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="https://archives.bulbagarden.net/media/upload/2/2c/SV10.5_Logo_EN.png" class="d-block w-100" alt="..." width="135" height="550">
-                </div>
-                <div class="carousel-item">
-                <img src="https://collectorstore.com/cdn/shop/files/yu-gi-oh-doom-of-dimensions-booster-box-expected-release-date-9-26-2025-585401.jpg?v=1748388060&width=600" class="d-block w-100" alt="..." width="135" height="550">
-                </div>
-                <div class="carousel-item">
-                <img src="https://i0.wp.com/tiendavalhalla.cl/wp-content/uploads/2025/07/mv_01.webp?fit=990%2C556&ssl=1" class="d-block w-100" alt="..." width="135" height="550">
-                </div>
-                <div class="carousel-item">
-                <img src="https://moonshotgamestore.com/cdn/shop/collections/EOE_sma_key_1920x1080_en_547a1e8f-51f2-4c6e-8fc5-b379dc4057a6.jpg?v=1752233383&width=1000" class="d-block w-100" alt="..." width="135" height="550">
-                </div>
-                <div class="carousel-item">
-                <img src="https://blog.myl.cl/wp-content/uploads/2024/09/image-2-1024x535.png" class="d-block w-100" alt="..." width="135" height="550">
-                </div>
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active"> <a href="categorias.html?franquicia=pokemon">
+                    <img src="https://archives.bulbagarden.net/media/upload/2/2c/SV10.5_Logo_EN.png"
+                        class="d-block w-100" alt="..." width="135" height="550">
+                </a>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
+            <div class="carousel-item"> <a href="categorias.html?franquicia=yugioh">
+                    <img src="https://collectorstore.com/cdn/shop/files/yu-gi-oh-doom-of-dimensions-booster-box-expected-release-date-9-26-2025-585401.jpg?v=1748388060&width=600"
+                        class="d-block w-100" alt="..." width="135" height="550">
+                </a>
+            </div>
+            <div class="carousel-item"> <a href="categorias.html?franquicia=onepiece">
+                    <img src="https://i0.wp.com/tiendavalhalla.cl/wp-content/uploads/2025/07/mv_01.webp?fit=990%2C556&ssl=1"
+                        class="d-block w-100" alt="..." width="135" height="550">
+                </a>
+            </div>
+            <div class="carousel-item"> <a href="categorias.html?franquicia=magic">
+                    <img src="https://moonshotgamestore.com/cdn/shop/collections/EOE_sma_key_1920x1080_en_547a1e8f-51f2-4c6e-8fc5-b379dc4057a6.jpg?v=1752233383&width=1000"
+                        class="d-block w-100" alt="..." width="135" height="550">
+                </a>
+            </div>
+            <div class="carousel-item"> <a href="categorias.html?franquicia=mitos">
 
-        <p class="boton_index" style="justify-self: center;">
-            <button class="button"><a href="productos.html"> <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Yu-Gi-Oh%21_%28Logo%29.jpg" alt="digimon" width="400" height="270"> </a></button>
-            <button class="button"><a href="productos.html"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Pok%C3%A9mon_Trading_Card_Game_logo.svg/1200px-Pok%C3%A9mon_Trading_Card_Game_logo.svg.png" alt="digimon" width="400" height="270"></button>
-            <button class="button"><a href="productos.html"> <img src="https://factorycardstcg.com/cdn/shop/collections/ONE_PIECE_LOGO.webp?v=1756577432" alt="digimon" width="400" height="270"></button>
+                    <img src="https://blog.myl.cl/wp-content/uploads/2024/09/image-2-1024x535.png" class="d-block w-100"
+                        alt="..." width="135" height="550">
+                </a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="grid-franquicias" id="franquicias"></div>
+    <script>
+        const franquicias = [
+            { id: 'yugioh', nombre: 'Yu-Gi-Oh!', imagen: 'https://th.bing.com/th/id/R.fc7e0dc9e6aa7098fad7d4c6cf12b4f9?rik=WDGP5hthzVRcXQ&riu=http%3a%2f%2fimg2.wikia.nocookie.net%2f__cb20131129140054%2fyugioh%2fimages%2f6%2f61%2fYugioh_Logo.png&ehk=rLjj1tbjHmMa1ijemgUXLtPrujJmOR0Zs8OZFj5dIag%3d&risl=&pid=ImgRaw&r=0' },
+            { id: 'magic', nombre: 'Magic: The Gathering', imagen: 'https://mnd-assets.mynewsdesk.com/image/upload/c_fill,dpr_auto,f_auto,g_sm,q_auto:good,w_746/v85jyye7uyoqc851m514kf' },
+            { id: 'pokemon', nombre: 'Pokémon TCG', imagen: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Pok%C3%A9mon_Trading_Card_Game_logo.svg/1200px-Pok%C3%A9mon_Trading_Card_Game_logo.svg.png' },
+            { id: 'mitos', nombre: 'Mitos y leyendas', imagen: 'https://static.wikia.nocookie.net/myl-tcg/images/f/f4/Myl-logo1-sf.png/revision/latest?cb=20240717144516&path-prefix=es' },
+            { id: 'onepiece', nombre: 'One Piece TCG', imagen: 'https://factorycardstcg.com/cdn/shop/collections/ONE_PIECE_LOGO.webp?v=1756577432' }
+
+
+        ];
+
+        const contenedor = document.getElementById('franquicias');
+        franquicias.forEach(franquicia => {
+            contenedor.innerHTML += `
+            <div class="franquicia">
+            <p class="boton_index" style="justify-self: center;">
+                <button class="button">
+                    <a href="categorias.html?franquicia=${franquicia.id}"> 
+                    <img src="${franquicia.imagen}" alt="${franquicia.nombre}"
+                            width="400" height="270"> 
+                    </a>
+                </button>
+            </p>
+
+           
             
-        </p>
-        <p class="boton_index" style="justify-self: center;">
-            <button class="button"><a href="productos.html"> <img src="https://mnd-assets.mynewsdesk.com/image/upload/c_fill,dpr_auto,f_auto,g_sm,q_auto:good,w_746/v85jyye7uyoqc851m514kf" alt="digimon" width="400" height="270"> </a></button>
-            <button class="button"><a href="productos.html"> <img src="https://static.wikia.nocookie.net/myl-tcg/images/f/f4/Myl-logo1-sf.png/revision/latest?cb=20240717144516&path-prefix=es" alt="digimon" width="400" height="270"></button>
             
-            
-        </p>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            </div>
+
+            `;
+        });
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col" style="justify-self: center;">
             <div class="card h-100">
-            <img src="https://home.ripley.cl/store/Attachment/WOP/D175/2000391690345/2000391690345-1.jpg" class="card-img-top" alt="mazo pokemon" >
-            <div class="card-body">
-                <h5 class="card-title">Mazo cartas Mewto</h5>
-                <p  style="color:MediumSeaGreen" class="card-text">$ 19.990</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-body-secondary">Pokemon</small>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-            <img src="https://cdnx.jumpseller.com/zona-x-gamers/image/30066904/thumb/719/719?1670871759" class="card-img-top" alt="Mazo Yu Gi Oh" >
-            <div class="card-body">
-                <h5 class="card-title">Mazo Estructurado Mundo oscuro</h5>
-                <p style="color:MediumSeaGreen" class="card-text">$ 14.990</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-body-secondary">Yu Gi Oh</small>
-            </div>
+                <img src="https://home.ripley.cl/store/Attachment/WOP/D175/2000391690345/2000391690345-1.jpg"
+                    class="card-img-top" alt="mazo pokemon">
+                <div class="card-body">
+                    <h5 class="card-title">Mazo cartas Mewto</h5>
+                    <p style="color:MediumSeaGreen" class="card-text">$ 19.990</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary">Pokemon</small>
+                </div>
             </div>
         </div>
         <div class="col">
             <div class="card h-100">
-            <img src="https://www.magicsur.cl/27862-thickbox_default/one-piece-card-game-smoker-starter-deck-st-19.jpg" class="card-img-top" alt="..." >
-            <div class="card-body">
-                <h5 class="card-title">Mazo cartas Smoker </h5>
-                <p style="color:MediumSeaGreen" class="card-text">$ 14.990</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-body-secondary">One Piece</small>
-            </div>
+                <img src="https://cdnx.jumpseller.com/zona-x-gamers/image/30066904/thumb/719/719?1670871759"
+                    class="card-img-top" alt="Mazo Yu Gi Oh">
+                <div class="card-body">
+                    <h5 class="card-title">Mazo Estructurado Mundo oscuro</h5>
+                    <p style="color:MediumSeaGreen" class="card-text">$ 14.990</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary">Yu Gi Oh</small>
+                </div>
             </div>
         </div>
-     
-        
-    <footer>TCG 2025</footer>
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://www.magicsur.cl/27862-thickbox_default/one-piece-card-game-smoker-starter-deck-st-19.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Mazo cartas Smoker </h5>
+                    <p style="color:MediumSeaGreen" class="card-text">$ 14.990</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary">One Piece</small>
+                </div>
+            </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+        <footer>TCG 2025</footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+            crossorigin="anonymous"></script>
 </body>
+
 </html>
